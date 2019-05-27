@@ -1,6 +1,7 @@
 'use strict';
 
-var Blockly = require('../lib/blockly_compressed.js');
+var Blockly = require('../lib/blockly_compressed');
+var Interpreter = require('../lib/interpreter');
 
 Blockly.setLocale = function (l) {
     try {
@@ -11,5 +12,7 @@ Blockly.setLocale = function (l) {
 }
 
 Blockly.setLocale('en');
+
+Blockly.Interpreter = Interpreter;
 
 module.exports = Blockly

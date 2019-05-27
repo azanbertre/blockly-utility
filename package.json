@@ -1,6 +1,6 @@
 {
   "name": "blockly-utility",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Utility for the Google's Blockly.js library",
   "main": "index.js",
   "scripts": {

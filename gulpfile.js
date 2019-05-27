@@ -28,7 +28,7 @@ function blockly_main() {
                     return jsdom.window.document;
                 };
             }
-            module.exports = Blockly;
+            module.exports = Blockly
         `))
         .pipe(dest('lib'))
 }
@@ -40,7 +40,22 @@ function blockly_msg() {
         .pipe(dest('lib/msg'))
 }
 
+function interpreter() {
+    return src('JS-Interpreter/interpreter.js')
+        .pipe(insert.prepend('var acorn = require("acorn");'))
+        .pipe(concat('interpreter.js'))
+        .pipe(insert.append('module.exports = Interpreter'))
+        .pipe(dest('lib'))
+}
+
+function acorn() {
+    return src('JS-Interpreter/acorn.js')
+        .pipe(dest('lib'))
+}
+
 exports.default = parallel(
     blockly_main,
-    blockly_msg
+    blockly_msg,
+    interpreter,
+    acorn
 )
